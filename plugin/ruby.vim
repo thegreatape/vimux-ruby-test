@@ -66,7 +66,7 @@ class RubyTest
   end
 
   def current_file
-    use_relative_path == 0 ? VIM::Buffer.current.name : Vim.evaluate('expand("%")')
+    use_relative_path == 0 ? VIM::Buffer.current.name : Vim.evaluate('expand("%")').gsub(/#{Vim.evaluate('getcwd()')}\/?/, '')
   end
 
   def rails_test_dir
